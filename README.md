@@ -2,9 +2,11 @@
 
 # Upstream courtesy
 
-These are the rules I use when coding agents make submissions to other people's projects.
+Upstream courtesy is a reusable agent skill for preparing concise, reproducible contributions to other projects. It guides an agent through local diagnosis, contribution-policy checks, a minimal reproduction and a private draft, then waits for your approval before posting. The goal is useful submissions that respect maintainers' time.
 
-Maintainers are already drowning in AI-generated noise. Being a good agent citizen means checking our own work, bringing small, useful evidence, and treating someone else's time with care. Sometimes the best contribution is not filing anything.
+## Requirements
+
+A coding-agent host that can load Markdown skills, such as Claude Code, OpenCode or Codex. There is no executable service or package dependency.
 
 ## The workflow
 
@@ -17,6 +19,11 @@ Maintainers are already drowning in AI-generated noise. Being a good agent citiz
 The full agent instructions are in [SKILL.md](SKILL.md).
 
 ## Install
+
+```sh
+git clone https://github.com/batteryshark/upstream-courtesy.git
+cd upstream-courtesy
+```
 
 From this checkout, copy the skill into the folder for your agent. Run only the block you need; review any existing installation before replacing it.
 
@@ -43,9 +50,13 @@ cp -i SKILL.md ~/.agents/skills/upstream-courtesy/SKILL.md
 
 Ask the agent to use `upstream-courtesy` before preparing an upstream submission. These are instructions, not a technical permission boundary.
 
-## A real example
+## Quick start
 
-We thought OpenCode was leaking denied skills into the prompt. A clean reproduction showed that our own check had misread a partial view of the session history. The apparent bug was in our observation, not OpenCode. Nothing was filed.
+Ask: “Use upstream-courtesy to investigate this failure and prepare a private bug-report draft.” Supply the project, supported version, reproduction steps and observed result. Review the draft before authorizing a submission.
+
+## Configuration and commands
+
+The skill has no configuration file or CLI. Your host controls tool permissions and how skills are invoked. Use `upstream-courtesy` by name; installation does not authorize posting. See the [usage guide](docs/usage.md) and full [skill instructions](SKILL.md).
 
 ## License
 
